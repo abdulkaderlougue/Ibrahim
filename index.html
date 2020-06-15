@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Script Tutorials" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<title>HTML5 Audio player with playlist | Script Tutorials</title>
+
+		<!-- add styles and scripts -->
+		<link href="css/styles.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h2>Back to '<a href="http://www.script-tutorials.com/html5-audio-player-with-playlist/">HTML5 Audio player with playlist</a>' tutorial</h2>
+		</header>
+		<div class="example">
+
+			<div class="player">
+				<div class="pl"></div>
+				<div class="title"></div>
+				<div class="artist"></div>
+				<div class="cover"></div>
+				<div class="controls">
+					<div class="play"></div>
+					<div class="pause"></div> 
+					<div class="rew"></div>
+					<div class="fwd"></div>
+				</div>
+				<div class="volume"></div>
+				<div class="tracker"></div>
+			</div>
+			
+			<ul class="playlist hidden">
+				<li audiourl="a-chams.mp3" artist ="Sourate 0">a-chams.mp3</li>
+				<li audiourl="ad-douha.mp3" artist ="Sourate 1">ad-douha.mp3</li>
+				<li audiourl="al-aadiate.mp3" artist ="Sourate 2">al-aadiate.mp3</li>
+				<li audiourl="al-aalaa.mp3" artist ="Sourate 3">al-aalaa.mp3</li>
+				<li audiourl="al-asr.mp3" artist ="Sourate 4">al-asr.mp3</li>
+				<li audiourl="al-balad.mp3" artist ="Sourate 5">al-balad.mp3</li>
+				<li audiourl="al-bayinah.mp3" artist ="Sourate 6">al-bayinah.mp3</li>
+				<li audiourl="al-charh.mp3" artist ="Sourate 7">al-charh.mp3</li>
+				<li audiourl="al-codr.mp3" artist ="Sourate 8">al-codr.mp3</li>
+				<li audiourl="al-coriya.mp3" artist ="Sourate 9">al-coriya.mp3</li>
+				<li audiourl="al-fadjr.mp3" artist ="Sourate 10">al-fadjr.mp3</li>
+				<li audiourl="al-falaq.mp3" artist ="Sourate 11">al-falaq.mp3</li>
+				<li audiourl="al-fiil.mp3" artist ="Sourate 12">al-fiil.mp3</li>
+				<li audiourl="al-ghaashiyah.mp3" artist ="Sourate 13">al-ghaashiyah.mp3</li>
+				<li audiourl="al-houmazah.mp3" artist ="Sourate 14">al-houmazah.mp3</li>
+				<li audiourl="al-ikhlas.mp3" artist ="Sourate 15">al-ikhlas.mp3</li>
+				<li audiourl="al-kaafiroun.mp3" artist ="Sourate 16">al-kaafiroun.mp3</li>
+				<li audiourl="al-kawthar.mp3" artist ="Sourate 17">al-kawthar.mp3</li>
+				<li audiourl="al-kouraiche.mp3" artist ="Sourate 18">al-kouraiche.mp3</li>
+				<li audiourl="al-layl.mp3" artist ="Sourate 19">al-layl.mp3</li>
+				<li audiourl="al-maaoun.mp3" artist ="Sourate 20">al-maaoun.mp3</li>
+				<li audiourl="al-massad.mp3" artist ="Sourate 21">al-massad.mp3</li>
+				<li audiourl="al-naas.mp3" artist ="Sourate 22">al-naas.mp3</li>
+				<li audiourl="al-zalzalah.mp3" artist ="Sourate 23">al-zalzalah.mp3</li>
+				<li audiourl="an-nasr.mp3" artist ="Sourate 24">an-nasr.mp3</li>
+				<li audiourl="at-takaathur.mp3" artist ="Sourate 25">at-takaathur.mp3</li>
+				<li audiourl="at-tiin.mp3" artist ="Sourate 26">at-tiin.mp3</li>
+				<li audiourl="fatiha.mp3" artist ="Sourate 27">fatiha.mp3</li>
+				<li audiourl="iqra.mp3" artist ="Sourate 28">iqra.mp3</li>
+			</ul>
+			
+		</div>
+		<!-- <script>
+			document.body.onload = addElement;
+			var audios = ["a-chams.mp3", 'ad-douha.mp3', 'al-aadiate.mp3', 'al-aalaa.mp3', 'al-asr.mp3', 'al-balad.mp3', 'al-bayinah.mp3', 'al-charh.mp3', 'al-codr.mp3', 'al-coriya.mp3', 'al-fadjr.mp3', 'al-falaq.mp3', 'al-fiil.mp3', 'al-ghaashiyah.mp3', 'al-houmazah.mp3', 'al-ikhlas.mp3', 'al-kaafiroun.mp3', 'al-kawthar.mp3', 'al-kouraiche.mp3', 'al-layl.mp3', 'al-maaoun.mp3', 'al-massad.mp3', 'al-naas.mp3', 'al-zalzalah.mp3', 'an-nasr.mp3', 'at-takaathur.mp3', 'at-tiin.mp3', 'fatiha.mp3', 'iqra.mp3'];
+
+			var i;
+			function addElement () { 
+			  for (i=0;i<audios.length;i++){
+			  // create a new div element 
+			  var li = document.createElement("li"); 
+			  // and give it some content 
+			  var newContent = document.createTextNode(audios[i]); 
+			  // add the text node to the newly created div
+			  li.appendChild(newContent);  
+
+			  // add the newly created element and its content into the DOM 
+			  var currentLi = document.getElementById("playlist"); 
+			  document.body.insertBefore(li, currentLi); 
+				}
+			}
+			/**var audios;
+			document.getElementsByClassName("playlist").addEventListener("load", createLi);
+
+			
+
+			function createLi(){
+				var li; 
+				var i;
+				var audioName;  
+				var sourateNumber;  
+				for (i = 0; i < audios.length; i++){
+					li = document.createElement('li');
+					audioName = document.createAttribute("audiourl"); // Create a "audiaurl" attribute
+					sourateNumber = document.createAttribute("artist");
+					audioName.value = audios[i];  		// Set the value of the attribute
+					sourateNumber.value = "Sourate " + i // TODO:: SHOULD MODIFY IT AFTER
+					li.setAttributeNode(audioName);	// Add the audioName attribute to <li>
+					li.setAttributeNode(sourateNumber);
+					li.innerHTML = audios[i];
+					// Add new item to task list
+					document.querySelector('.playlist').append(li);
+					}
+			} **/
+			
+		</script> -->
+	</body>
+</html>
